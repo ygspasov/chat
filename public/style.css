@@ -1,0 +1,15 @@
+body {
+    padding-top: 50px;
+}
+
+.main-content {
+    padding: 40px 15px;
+}
+
+nav.navbar {
+    background-color: #286090;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+    color: #ddd;
+}

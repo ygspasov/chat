@@ -1,0 +1,32 @@
+extends layout
+
+block content
+    div.row
+        div.col-md-6
+            h3 Add a Book for Discussion
+            div#books.list-group
+            form(action='/books', method='POST')
+                input.form-control(type='text', placeholder='Author', name='name')
+                input.form-control(type='text', placeholder='Book Title', name='book')
+                button.btn.btn-default(type='submit') Submit
+
+        div.col-md-6
+            h3 Books to be Discussed
+            ul.list-group
+                each val in chat
+                    li.list-group-item= val.name + " - " + val.book
+
+    div.row
+        div.col-md-8
+            h3#roomName
+            textarea#messages.form-control(rows=15)
+            button.btn.btn-default#delete Delete All Messages
+            h3 Post a Message
+            textarea#message.form-control(rows=2)
+            button.btn.btn-primary#post Post
+        div.col-md-4
+            h3 Chat Rooms
+            div#rooms.list-group
+
+    script(src="/jquery.min.js",type="text/javascript")
+    script(src="/home.js",type="text/javascript")
