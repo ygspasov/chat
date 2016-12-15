@@ -12,7 +12,9 @@ MongoClient.connect('mongodb://localhost/chat', (err, database) => {
     db = database;
 });
 
+//setting "views" as the main folder for our templates
 app.set("views", "./views");
+//Defining Pug as the main template engine
 app.set('view engine', 'pug');
 
 app.use(require("./logging.js"));
