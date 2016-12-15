@@ -3,17 +3,16 @@ extends layout
 block content
     h1 Chat Rooms
     a.btn.btn-primary(href="/admin/rooms/add") Create a new chat room
-    table.table.table-striped
+    table.table.table-responsive.table-hover
         thead
             tr
                 th
-                th Name
-                th
-                th Id
+                th Room Name
+                th Room Id
         tbody
             each room in rooms
                 tr
-                    td(style="width: 50px;")
+                    td
+                        span.glyphicon.glyphicon-book
                     td= room.name
-                    td(style="width: 50px;")
                     td= room.id

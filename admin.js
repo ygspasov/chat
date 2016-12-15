@@ -6,7 +6,7 @@ var rooms = require("./data/rooms.json");
 var router = express.Router();
 module.exports = router;
 
-//Ensuring only admins can administrate chat rooms:
+//Ensuring only admins can administer chat rooms:
 router.use(function (req,res,next) {
     if(req.user.admin){
         res.locals.user=req.user;
@@ -16,6 +16,7 @@ router.use(function (req,res,next) {
     res.redirect("/login");
 });
 
+//Rendering the rooms view
 router.get('/rooms', function (req, res) {
     res.render("rooms", {
         title: "Admin Rooms",
@@ -27,7 +28,9 @@ router.route('/rooms/add')
     .get(function (req, res) {
         res.render("add");
     })
+    //responding to post request
     .post(function (req, res) {
+        //creating a room object with name and id
         var room = {
             name: req.body.name,
             id: uuid.v4()
@@ -35,34 +38,7 @@ router.route('/rooms/add')
 
         rooms.push(room);
 
+        //redirecting the user to the list of chat rooms after submission
         res.redirect(req.baseUrl + "/rooms");
     });
 
-router.route('/rooms/edit/:id')
-    .all(function(req, res, next){
-        var roomId = req.params.id;
-
-        var room = _.find(rooms, r => r.id === roomId);
-        if (!room) {
-            res.sendStatus(404);
-            return;
-        }
-        res.locals.room = room;
-        next()
-    })
-    .get(function (req, res) {
-        res.render("edit");
-    })
-    .post(function (req, res) {
-        res.locals.room.name = req.body.name;
-
-        res.redirect(req.baseUrl + "/rooms");
-    });
-
-router.get('/rooms/delete/:id', function (req, res) {
-    var roomId = req.params.id;
-
-    rooms = rooms.filter(r => r.id !== roomId);
-
-    res.redirect(req.baseUrl + "/rooms");
-});

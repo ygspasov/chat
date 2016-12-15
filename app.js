@@ -47,8 +47,9 @@ app.use(function (req, res, next) {
 app.get('/', function (req, res) {
     db.collection('chat').find().toArray((err, results) => {
         if (err) return console.log(err);
+//rendering the home view on our homepage
         res.render("home", {title: "Home",chat: results});
-    })
+    });
 });
 
 app.post('/books', (req, res) => {
@@ -63,7 +64,7 @@ app.post('/books', (req, res) => {
 app.get('/tellus', function (req, res) {
     db.collection('readerinfo').find().toArray((err, results) => {
         if (err) return console.log(err);
-        res.render("tellus", {title: "Tell Us",chat: results});
+        res.render("tellus", {title: "Let us know",chat: results});
     })
 });
 

@@ -13,3 +13,7 @@ nav.navbar {
 .navbar-inverse .navbar-nav>li>a {
     color: #ddd;
 }
+
+button, a.btn{
+    margin: 10px 10px 0 0;
+}
