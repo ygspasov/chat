@@ -77,6 +77,7 @@ app.post('/tellus', (req, res) => {
     })
 });
 
+//Importing the admin module
 var adminRouter = require("./admin");
 app.use("/admin", adminRouter);
 

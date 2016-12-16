@@ -1,4 +1,6 @@
+// Simple, fast generation of RFC4122 UUIDS.
 var uuid = require("node-uuid");
+//toolkit for manipulating objects and collections
 var _ = require("lodash");
 var express = require("express");
 var rooms = require("./data/rooms.json");
