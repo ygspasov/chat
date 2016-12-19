@@ -4,6 +4,7 @@ var users = require("./data/users.json");
 var _ = require("lodash");
 
 passport.use(new LocalStrategy(function(username, password, done){
+    //using the lodashes find function to work with our users.json file
     var user = _.find(users, u => u.name === username);
 
     if(!user || user.password !== password){

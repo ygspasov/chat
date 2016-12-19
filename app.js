@@ -29,6 +29,8 @@ app.use(bodyParser.json());
 app.use(require('express-session')({
     secret: 'keyboard cat', resave: false, saveUninitialized: false
 }));
+
+//Initiali
 app.use(passport.initialize());
 app.use(passport.session());
 
